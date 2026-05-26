@@ -8,7 +8,7 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["scam_soc"]
 collection = db["alerts"]
 
-model = joblib.load('../model/scam_detector.pkl')
+model = joblib.load('model/scam_detector.pkl')
 
 @app.route('/predict', methods=['POST'])
 def predict():
