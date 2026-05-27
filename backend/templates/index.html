@@ -1,16 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Scam URL Detector</title>
+<title>Scam URL Checker</title>
+
+<style>
+
+body{
+background:#050b16;
+font-family:Arial,sans-serif;
+text-align:center;
+color:white;
+padding-top:100px;
+}
+
+.container{
+width:70%;
+margin:auto;
+padding:50px;
+background:#0d1117;
+
+border-top:4px solid red;
+border-bottom:4px solid red;
+
+box-shadow:0 0 20px red;
+border-radius:20px;
+}
+
+h1{
+font-size:50px;
+font-weight:bold;
+color:red;
+}
+
+p{
+font-size:25px;
+font-weight:bold;
+}
+
+input{
+
+width:70%;
+padding:20px;
+
+font-size:20px;
+
+background:black;
+color:white;
+
+border:2px solid red;
+border-radius:10px;
+}
+
+button{
+
+margin-top:20px;
+
+padding:15px 40px;
+
+font-size:25px;
+
+font-weight:bold;
+
+background:red;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+}
+
+button:hover{
+
+background:darkred;
+
+box-shadow:0 0 20px red;
+
+}
+
+.warning{
+
+font-size:28px;
+font-weight:bold;
+color:#ff4d4d;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-<h1>Scam URL Checker</h1>
+<div class="container">
+
+<h1>SCAM URL DETECTOR</h1>
+
+<p class="warning">
+⚠ Enter URL To Detect Scam Links ⚠
+</p>
 
 <form action="/predict" method="POST">
-    <input type="text" name="message" placeholder="Enter URL" required>
-    <button type="submit">Check</button>
+
+<input
+type="text"
+name="message"
+placeholder="Paste URL here..."
+required>
+
+<br>
+
+<button type="submit">
+
+CHECK NOW
+
+</button>
+
 </form>
+
+</div>
 
 </body>
 </html>
