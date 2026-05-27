@@ -3,6 +3,9 @@ import joblib
 from pymongo import MongoClient
 
 app = Flask(__name__)
+@app.route("/")
+def home():
+    return "Scam SOC Project is running successfully!"
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client["scam_soc"]
