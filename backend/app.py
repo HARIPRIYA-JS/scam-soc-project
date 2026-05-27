@@ -1,12 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 from pymongo import MongoClient
 
 app = Flask(__name__)
 @app.route("/")
 def home():
-    return "Scam SOC Project is running successfully!"
-
+    return render_template("index.html")
 client = MongoClient("mongodb://localhost:27017/")
 db = client["scam_soc"]
 collection = db["alerts"]
@@ -15,16 +14,18 @@ model = joblib.load('model/scam_detector.pkl')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json
-    msg = data['message']
+
+    msg = request.form['message']
 
     result = model.predict([msg])[0]
 
     collection.insert_one({
         "message": msg,
-        "prediction": result
+        "prediction": str(result)
     })
 
-    return jsonify({'prediction': result})
-
-app.run(host='0.0.0.0', port=5000)
+    return f"""
+    <h2>URL: {msg}</h2>
+    <h1>Prediction: {result}</h1>
+    <a href="/">Check Another URL</a>
+    """
