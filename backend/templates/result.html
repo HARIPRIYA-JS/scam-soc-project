@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scam Detection Result</title>
+
+<style>
+body{
+    background-color:#0d1117;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    margin-top:50px;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+    padding:30px;
+    border-radius:20px;
+    background:#161b22;
+    box-shadow:0 0 20px red;
+}
+
+.url{
+    color:#58a6ff;
+    font-size:20px;
+    word-wrap:break-word;
+}
+
+.scam{
+    color:red;
+    font-size:70px;
+    font-weight:bold;
+    text-transform:uppercase;
+    animation:blink 1s infinite;
+}
+
+.safe{
+    color:lime;
+    font-size:70px;
+    font-weight:bold;
+}
+
+.warning{
+    color:yellow;
+    font-size:30px;
+    animation:blink 0.8s infinite;
+}
+
+.button{
+    padding:15px;
+    background:red;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-size:20px;
+}
+
+.button:hover{
+    background:darkred;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Entered URL</h2>
+
+<p class="url">{{url}}</p>
+
+{% if prediction=="scam" %}
+
+<div class="warning">
+⚠ WARNING POSSIBLE SCAM DETECTED ⚠
+</div>
+
+<h1 class="scam">
+SCAM
+</h1>
+
+<p>
+Do not share passwords, OTPs, bank details or personal information.
+</p>
+
+{% else %}
+
+<h1 class="safe">
+SAFE
+</h1>
+
+{% endif %}
+
+<br><br>
+
+<a href="/" class="button">
+Check Another URL
+</a>
+
+</div>
+
+</body>
+</html>
