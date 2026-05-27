@@ -11,7 +11,6 @@ db = client["scam_soc"]
 collection = db["alerts"]
 
 model = joblib.load('model/scam_detector.pkl')
-
 @app.route('/predict', methods=['POST'])
 def predict():
 
@@ -19,16 +18,13 @@ def predict():
 
     result = model.predict([msg])[0]
 
-    collection.insert_one({
-        "message": msg,
-        "prediction": str(result)
-    })
-
     return f"""
     <h2>URL: {msg}</h2>
     <h1>Prediction: {result}</h1>
     <a href="/">Check Another URL</a>
     """
+
+    
 import os
 
 if __name__ == "__main__":
